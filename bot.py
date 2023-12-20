@@ -44,6 +44,10 @@ async def dub_me(ctx):
     await ctx.send(file=discord.File(DUBSTEP[random.randint(0, len(DUBSTEP) - 1)]))
     print(ctx.message.author)
 
+@bot.command()
+async def fig_story(ctx):
+    await ctx.send(FIG_STORY)
+
 @bot.listen()
 async def on_message(message):
     msg = message.content.lower()
@@ -66,4 +70,6 @@ FIGS = ["resources/fig1.jpg"]
 
 DUBSTEP = ["resources/figstep.mov", "resources/dragonstep.mov", "resources/grapestep.mov", "resources/cherrystep.mov", "resources/applestep.mov", "resources/watermelonstep.mov", "resources/orangestep.mov", "resources/bananastep.mov", "resources/lemonstep.mov", "resources/pumpkinstep.mov", "resources/figstep2.mov", "resources/appledit.mov", "resources/kiwistep.mov", "resources/leekstep.mov", "resources/blueberrystep.mov", "resources/coconut.mov", "resources/lychee.mov", "resources/beanstep.mov"]
 
-bot.run('MTE4NjUyODMwMTIzMDA2Mzc4Ng.G-_FM-.z-UgMbRFnYRXGuKiJGFsp92Z1Og5mBeoK8cHSg')
+FIG_STORY = "There is a specific species of wasps that lays their eggs inside of a fig called the Fig Wasp. When a Fig Wasp is ready to lay their eggs, they will crawl their way inside a fig, breaking all their legs just to fit inside the hole. The Fig Wasp will then lay their eggs inside a FEMALE Fig. When this happens, the fig will release enzymes to eat the wasp."
+
+bot.run('MTE4NjUyODMwMTIzMDA2Mzc4Ng.GtRuUY.oiS_7ID8wdQSpqirZothR45Q3o4I9Jvt20X2-4')
