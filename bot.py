@@ -4,7 +4,7 @@ from discord.ext import commands
 import DiscordUtils
 
 intents = discord.Intents.default()
-intents.message_content = True
+intents.messages = True
 
 description = ''' '''
 bot = commands.Bot(command_prefix='$', intents=intents)
@@ -72,4 +72,4 @@ DUBSTEP = ["resources/figstep.mov", "resources/dragonstep.mov", "resources/grape
 
 FIG_STORY = "There is a specific species of wasps that lays their eggs inside of a fig called the Fig Wasp. When a Fig Wasp is ready to lay their eggs, they will crawl their way inside a fig, breaking all their legs just to fit inside the hole. The Fig Wasp will then lay their eggs inside a FEMALE Fig. When this happens, the fig will release enzymes to eat the wasp."
 
-bot.run('MTE4NjUyODMwMTIzMDA2Mzc4Ng.GtRuUY.oiS_7ID8wdQSpqirZothR45Q3o4I9Jvt20X2-4')
+bot.run('MTE4NjUyODMwMTIzMDA2Mzc4Ng.Gc060v.G-XTyy3MO1Q0EfEiUS0mBs3R4BGLlaRZhG0Y2s')
