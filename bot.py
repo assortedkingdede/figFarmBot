@@ -1,13 +1,16 @@
+import os
 import random
 import discord
 from discord.ext import commands
 import DiscordUtils
 
-intents = discord.Intents.default()
-intents.messages = True
+intents = discord.Intents.all()
+intents.message_content = True
 
 description = ''' '''
 bot = commands.Bot(command_prefix='$', intents=intents)
+
+DUBSTEP = os.listdir('resources/')
 
 def debugFunction():
     print("debug function active")
@@ -20,12 +23,11 @@ def debugFunction():
         print(guild.id)
         print(guild.owner)
         print(guild.member_count)
-        print("DUBSTEP LIST LENGTH: ", len(DUBSTEP))
     print('------')
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game(name="Currently Figging rn"))
+    await bot.change_presence(activity=discord.Game(name="FIGMAXXING"))
     debugFunction()
     
 @bot.command()
@@ -40,11 +42,6 @@ async def fig_me(ctx):
     print(ctx.message.author)
 
 @bot.command()
-async def dub_me(ctx):
-    await ctx.send(file=discord.File(DUBSTEP[random.randint(0, len(DUBSTEP) - 1)]))
-    print(ctx.message.author)
-
-@bot.command()
 async def fig_story(ctx):
     await ctx.send(FIG_STORY)
 
@@ -53,7 +50,7 @@ async def on_message(message):
     msg = message.content.lower()
     word = 'sex' # or could be a sentence or phrase (ie 'these words')
     if word in msg:
-        await message.channel.send(file=discord.File(DUBSTEP[random.randint(0, len(DUBSTEP) - 1)]))
+        await message.channel.send(file=discord.File("resources/" + DUBSTEP[random.randint(0, len(DUBSTEP) - 1)]))
         print("SEX DETECTED")
 
 @bot.event
@@ -68,8 +65,6 @@ async def help(ctx):
 
 FIGS = ["resources/fig1.jpg"]
 
-DUBSTEP = ["resources/figstep.mov", "resources/dragonstep.mov", "resources/grapestep.mov", "resources/cherrystep.mov", "resources/applestep.mov", "resources/watermelonstep.mov", "resources/orangestep.mov", "resources/bananastep.mov", "resources/lemonstep.mov", "resources/pumpkinstep.mov", "resources/figstep2.mov", "resources/appledit.mov", "resources/kiwistep.mov", "resources/leekstep.mov", "resources/blueberrystep.mov", "resources/coconut.mov", "resources/lychee.mov", "resources/beanstep.mov"]
-
 FIG_STORY = "There is a specific species of wasps that lays their eggs inside of a fig called the Fig Wasp. When a Fig Wasp is ready to lay their eggs, they will crawl their way inside a fig, breaking all their legs just to fit inside the hole. The Fig Wasp will then lay their eggs inside a FEMALE Fig. When this happens, the fig will release enzymes to eat the wasp."
 
-bot.run('REDACTED')
+bot.run('MTE4NjUyODMwMTIzMDA2Mzc4Ng.Ge7J_Z.bQ55p_8wDNkcDXl6uXMOKX_x7KOlXBh1ItFbyw')
