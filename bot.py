@@ -52,7 +52,7 @@ async def fig_story(ctx):
 async def suggestions(ctx, *, suggestion):
     # Append to end of file instead of overwrite
     with open("suggestionBox.txt", "a") as file:
-        file.write(ctx.message.author + ': ' + suggestion.lower() + '\n')
+        file.write(ctx.message.author.name + ': ' + suggestion.lower() + '\n')
     await ctx.send("Suggestion noted")
 
 #do not name a listener on_message
