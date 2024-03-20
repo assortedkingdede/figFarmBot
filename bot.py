@@ -49,13 +49,13 @@ async def fig_story(ctx):
 
 #Suggestion box feature
 @bot.command()
-async def suggestions(suggestion):
-    #append to end of file instead of overwrite
-    file = open("suggestionBox.txt", "a")
-    file.write(suggestion.content.lower())
-    file.close
-    suggestion.send("Suggestion noted")
+async def suggestions(ctx, *, suggestion):
+    # Append to end of file instead of overwrite
+    with open("suggestionBox.txt", "a") as file:
+        file.write(suggestion.lower() + '\n')
+    await ctx.send("Suggestion noted")
 
+#do not name a listener on_message
 @bot.listen()
 async def funnyResponse(message):
     msg = message.content.lower()
