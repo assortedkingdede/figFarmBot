@@ -53,6 +53,13 @@ async def on_message(message):
         await message.channel.send(file=discord.File("resources/" + DUBSTEP[random.randint(0, len(DUBSTEP) - 1)]))
         print("SEX DETECTED")
 
+    if 'listener' in message.content.lower():
+        #\:YourEmoji: in discord to get id 
+        emoji = bot.get_emoji(1208654541948583947)
+        await message.add_reaction(emoji)
+
+    await bot.process_commands(message)
+
 @bot.event
 async def help(ctx):
     await ctx.send("""Commands:
@@ -67,4 +74,4 @@ FIGS = ["resources/fig1.jpg"]
 
 FIG_STORY = "There is a specific species of wasps that lays their eggs inside of a fig called the Fig Wasp. When a Fig Wasp is ready to lay their eggs, they will crawl their way inside a fig, breaking all their legs just to fit inside the hole. The Fig Wasp will then lay their eggs inside a FEMALE Fig. When this happens, the fig will release enzymes to eat the wasp."
 
-bot.run('REDACTED')
+bot.run('MTE4NjUyODMwMTIzMDA2Mzc4Ng.GnC74L.qV4iT2mylBuuecPwnjqUqakqjzUeNxtKBkechw')
