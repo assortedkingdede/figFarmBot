@@ -53,9 +53,14 @@ async def on_message(message):
         await message.channel.send(file=discord.File("resources/" + DUBSTEP[random.randint(0, len(DUBSTEP) - 1)]))
         print("SEX DETECTED")
 
-    if 'listener' in message.content.lower():
+    if 'we are so back' in message.content.lower():
         #\:YourEmoji: in discord to get id 
-        emoji = bot.get_emoji(1208654541948583947)
+        rand_num = random.randint(0, 1)
+        if rand_num == 0:
+            emoji = bot.get_emoji(1208655157982928896)
+        if rand_num == 1:
+            emoji = bot.get_emoji(1208654541948583947)
+        
         await message.add_reaction(emoji)
 
     await bot.process_commands(message)
