@@ -57,13 +57,13 @@ async def suggestions(suggestion):
     suggestion.send("Suggestion noted")
 
 @bot.listen()
-async def on_message(message):
+async def funnyResponse(message):
     msg = message.content.lower()
     #change word?
     word = 'sex' # or could be a sentence or phrase (ie 'these words')
     if word in msg:
         await message.channel.send(file=discord.File("resources/" + DUBSTEP[random.randint(0, len(DUBSTEP) - 1)]))
-        print("SEX DETECTED", message.message.author)
+        print("SEX DETECTED")#, message.message.author#)
 
     if 'we are so back' in message.content.lower():
         #\:YourEmoji: in discord to get id 
