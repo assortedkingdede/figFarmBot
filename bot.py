@@ -47,13 +47,23 @@ async def fig_me(ctx):
 async def fig_story(ctx):
     await ctx.send(FIG_STORY)
 
+#Suggestion box feature
+@bot.command()
+async def suggestions(suggestion):
+    #append to end of file instead of overwrite
+    file = open("suggestionBox.txt", "a")
+    file.write(suggestion.content.lower())
+    file.close
+    suggestion.send("Suggestion noted")
+
 @bot.listen()
 async def on_message(message):
     msg = message.content.lower()
+    #change word?
     word = 'sex' # or could be a sentence or phrase (ie 'these words')
     if word in msg:
         await message.channel.send(file=discord.File("resources/" + DUBSTEP[random.randint(0, len(DUBSTEP) - 1)]))
-        print("SEX DETECTED")
+        print("SEX DETECTED", message.message.author)
 
     if 'we are so back' in message.content.lower():
         #\:YourEmoji: in discord to get id 
@@ -69,16 +79,6 @@ async def on_message(message):
         await message.channel.send(file=discord.File("resources/reactions/sadsponge.mp4"))
 
     await bot.process_commands(message)
-
-@bot.event
-async def help(ctx):
-    await ctx.send("""Commands:
-    !help: Shows this command
-    !hello: Says World
-    !add: Adds two numbers.
-    !subtract: Subtracts one number from another.
-    !multiply: Multiplys two numbers.
-    !divide: Divides two numbers. """)
 
 FIGS = ["resources/fig1.jpg"]
 
