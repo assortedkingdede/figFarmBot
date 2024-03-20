@@ -11,9 +11,9 @@ description = ''' '''
 bot = commands.Bot(command_prefix='$', intents=intents)
 
 DUBSTEP = os.listdir('resources/')
+REACTIONS = os.listdir('resources/reactions/')
 
 def debugFunction():
-    print("debug function active")
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
@@ -29,13 +29,15 @@ def debugFunction():
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name="FIGMAXXING"))
     debugFunction()
-    
+
+#not needed anymore
 @bot.command()
 async def hello(ctx):
     #helper function?
     await ctx.send("Who is Figging rn")
     print(ctx.message.author)
-    
+
+#depreciated remove?
 @bot.command()
 async def fig_me(ctx):
     await ctx.send(file=discord.File(FIGS[0]))
@@ -62,6 +64,9 @@ async def on_message(message):
             emoji = bot.get_emoji(1208654541948583947)
         
         await message.add_reaction(emoji)
+
+        if 'its so joever' in message.content.lower():
+            await message.channel.send(file=discord.File("resources/reactions/sadsponge.mp4"))
 
     await bot.process_commands(message)
 
