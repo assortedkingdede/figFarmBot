@@ -65,8 +65,8 @@ async def on_message(message):
         
         await message.add_reaction(emoji)
 
-        if 'its so joever' in message.content.lower():
-            await message.channel.send(file=discord.File("resources/reactions/sadsponge.mp4"))
+    if 'its so joever' in message.content.lower():
+        await message.channel.send(file=discord.File("resources/reactions/sadsponge.mp4"))
 
     await bot.process_commands(message)
 
