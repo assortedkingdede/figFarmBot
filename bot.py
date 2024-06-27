@@ -2,7 +2,6 @@ import os
 import random
 import discord
 from discord.ext import commands
-import DiscordUtils
 
 intents = discord.Intents.all()
 intents.message_content = True
@@ -30,14 +29,11 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name="FIGMAXXING"))
     debugFunction()
 
-#not needed anymore
 @bot.command()
 async def hello(ctx):
-    #helper function?
     await ctx.send("Who is Figging rn")
     print(ctx.message.author)
 
-#depreciated remove?
 @bot.command()
 async def fig_me(ctx):
     await ctx.send(file=discord.File(FIGS[0]))
@@ -47,35 +43,29 @@ async def fig_me(ctx):
 async def fig_story(ctx):
     await ctx.send(FIG_STORY)
 
-#Suggestion box feature
 @bot.command()
 async def suggestions(ctx, *, suggestion):
-    # Append to end of file instead of overwrite
     with open("suggestionBox.txt", "a") as file:
         file.write(ctx.message.author.name + ': ' + suggestion.lower() + '\n')
     await ctx.send("Suggestion noted")
 
-#do not name a listener on_message
-@bot.listen()
-async def funnyResponse(message):
-    msg = message.content.lower()
-    #change word?
-    word = 'sex' # or could be a sentence or phrase (ie 'these words')
-    if word in msg:
-        await message.channel.send(file=discord.File("resources/" + DUBSTEP[random.randint(0, len(DUBSTEP) - 1)]))
-        print("SEX DETECTED")#, message.message.author#)
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return  # Prevent the bot from responding to its own messages
 
-    if 'we are so back' in message.content.lower():
-        #\:YourEmoji: in discord to get id 
+    msg = message.content.lower()
+    word = 'sex'
+    if word in msg:
+        await message.channel.send(file=discord.File("resources/" + random.choice(DUBSTEP)))
+        print("SEX DETECTED")
+
+    if 'we are so back' in msg:
         rand_num = random.randint(0, 1)
-        if rand_num == 0:
-            emoji = bot.get_emoji(1208655157982928896)
-        if rand_num == 1:
-            emoji = bot.get_emoji(1208654541948583947)
-        
+        emoji = bot.get_emoji(1208655157982928896 if rand_num == 0 else 1208654541948583947)
         await message.add_reaction(emoji)
 
-    if 'its so joever' in message.content.lower():
+    if 'its so joever' in msg:
         await message.channel.send(file=discord.File("resources/reactions/sadsponge.mp4"))
 
     await bot.process_commands(message)
@@ -84,4 +74,4 @@ FIGS = ["resources/fig1.jpg"]
 
 FIG_STORY = "There is a specific species of wasps that lays their eggs inside of a fig called the Fig Wasp. When a Fig Wasp is ready to lay their eggs, they will crawl their way inside a fig, breaking all their legs just to fit inside the hole. The Fig Wasp will then lay their eggs inside a FEMALE Fig. When this happens, the fig will release enzymes to eat the wasp."
 
-bot.run('REDACTED')
+bot.run('MTE4NjUyODMwMTIzMDA2Mzc4Ng.GGZdtD.2M_ykeN0CU95fN-d9lu8zNFqhH_MKUJTKd7OMY')
