@@ -9,8 +9,15 @@ intents.message_content = True
 description = ''' '''
 bot = commands.Bot(command_prefix='$', intents=intents)
 
-DUBSTEP = os.listdir('resources/')
-REACTIONS = os.listdir('resources/reactions/')
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Define paths relative to the script directory
+resources_path = os.path.join(script_dir, 'resources')
+reactions_path = os.path.join(resources_path, 'reactions')
+
+# List the contents of the directories
+DUBSTEP = os.listdir(resources_path)
+REACTIONS = os.listdir(reactions_path)
 
 def debugFunction():
     print('Logged in as')
