@@ -62,11 +62,10 @@ async def on_message(message):
         return  # Prevent the bot from responding to its own messages
 
     msg = message.content.lower()
-    word = 'sex'
-    if word in msg:
+    if 'sex' in msg or 'fruit' in msg or 'head' in msg or 'vegetable' in msg or '21' in msg or 'oki' in msg or 'ok' in msg or 'csm' in msg:
         await message.channel.send(file=discord.File("resources/" + random.choice(DUBSTEP)))
         print("SEX DETECTED")
-
+    
     if 'we are so back' in msg:
         rand_num = random.randint(0, 1)
         emoji = bot.get_emoji(1208655157982928896 if rand_num == 0 else 1208654541948583947)
@@ -81,4 +80,4 @@ FIGS = ["resources/fig1.jpg"]
 
 FIG_STORY = "There is a specific species of wasps that lays their eggs inside of a fig called the Fig Wasp. When a Fig Wasp is ready to lay their eggs, they will crawl their way inside a fig, breaking all their legs just to fit inside the hole. The Fig Wasp will then lay their eggs inside a FEMALE Fig. When this happens, the fig will release enzymes to eat the wasp."
 
-bot.run('INSERT')
+bot.run('MTE4NjUyODMwMTIzMDA2Mzc4Ng.GA0sLn.rfQ1qSQJ4GhR9F6rKrwjVlDTP3ucsG93Zkw01o')
