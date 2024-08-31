@@ -1,4 +1,7 @@
+#there is a bug present where there is a chance of a directory within resources to be loaded as a file, restructure directories when possible
+
 import os
+import re
 import random
 import discord
 from discord.ext import commands
@@ -14,10 +17,13 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 # Define paths relative to the script directory
 resources_path = os.path.join(script_dir, 'resources')
 reactions_path = os.path.join(resources_path, 'reactions')
+summer_path = os.path.join(script_dir, '104', '104.mp4')
 
 # List the contents of the directories
 DUBSTEP = os.listdir(resources_path)
 REACTIONS = os.listdir(reactions_path)
+
+number_sum = 0
 
 def debugFunction():
     print('Logged in as')
@@ -73,6 +79,24 @@ async def on_message(message):
 
     if 'its so joever' in msg:
         await message.channel.send(file=discord.File("resources/reactions/sadsponge.mp4"))
+
+    numbers_in_msg = re.findall(r'\d+', msg)
+    numbers_in_msg = list(map(int, numbers_in_msg))
+
+    global number_sum
+
+    if numbers_in_msg:
+        number_sum += sum(numbers_in_msg)  # Add the sum of numbers found in the message to the total
+        print(f"Current sum of numbers: {number_sum}")
+
+        # If the sum or individual number is 104, post the video
+        if number_sum == 104:
+            print('104 days of summer vacation')
+            await message.channel.send(file=discord.File(summer_path))
+
+        if number_sum > 104:
+            print('Sum exceeded 104, resetting to zero')
+            number_sum = 0
 
     await bot.process_commands(message)
 
