@@ -16,7 +16,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Define paths relative to the script directory
 resources_path = os.path.join(script_dir, 'resources')
-reactions_path = os.path.join(resources_path, 'reactions')
+reactions_path = os.path.join(script_dir, 'reactions')
 summer_path = os.path.join(script_dir, '104', '104.mp4')
 
 # List the contents of the directories
@@ -41,6 +41,8 @@ def debugFunction():
 async def on_ready():
     await bot.change_presence(activity=discord.Game(name="FIGMAXXING"))
     debugFunction()
+    #uncomment for funny
+    #bot.loop.create_task(send_message_loop())
 
 @bot.command()
 async def hello(ctx):
@@ -78,7 +80,10 @@ async def on_message(message):
         await message.add_reaction(emoji)
 
     if 'its so joever' in msg:
-        await message.channel.send(file=discord.File("resources/reactions/sadsponge.mp4"))
+        await message.channel.send(file=discord.File("reactions/sadsponge.mp4"))
+
+    if 'blue drink' in msg:
+        await message.channel.send(file=discord.File("reactions/bluedrink.mp4"))
 
     numbers_in_msg = re.findall(r'\d+', msg)
     numbers_in_msg = list(map(int, numbers_in_msg))
@@ -100,8 +105,22 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+async def send_message_loop():
+    await bot.wait_until_ready()  # Ensure the bot is ready before starting the loop
+    channel_id = 1162197169328095243  # Replace with the actual channel ID
+    channel = bot.get_channel(channel_id)
+    
+    if not channel:
+        print("Channel not found")
+        return
+    
+    while True:
+        message = input("Enter a message to send to the Discord channel: ")
+        await channel.send(message)
+        print(f"Message sent: {message}")
+
 FIGS = ["resources/fig1.jpg"]
 
 FIG_STORY = "There is a specific species of wasps that lays their eggs inside of a fig called the Fig Wasp. When a Fig Wasp is ready to lay their eggs, they will crawl their way inside a fig, breaking all their legs just to fit inside the hole. The Fig Wasp will then lay their eggs inside a FEMALE Fig. When this happens, the fig will release enzymes to eat the wasp."
 
-bot.run('INSERT')
+bot.run('N/A')
