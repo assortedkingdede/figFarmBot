@@ -5,6 +5,7 @@ import re
 import random
 import discord
 from discord.ext import commands
+import subprocess
 
 intents = discord.Intents.all()
 intents.message_content = True
@@ -63,6 +64,11 @@ async def suggestions(ctx, *, suggestion):
     with open("suggestionBox.txt", "a") as file:
         file.write(ctx.message.author.name + ': ' + suggestion.lower() + '\n')
     await ctx.send("Suggestion noted")
+
+@bot.command()
+async def system_status(ctx):
+    result = subprocess.run(['neofetch'], capture_output=True, text=True)
+    await ctx.send(result)
 
 @bot.event
 async def on_message(message):
@@ -123,4 +129,4 @@ FIGS = ["resources/fig1.jpg"]
 
 FIG_STORY = "There is a specific species of wasps that lays their eggs inside of a fig called the Fig Wasp. When a Fig Wasp is ready to lay their eggs, they will crawl their way inside a fig, breaking all their legs just to fit inside the hole. The Fig Wasp will then lay their eggs inside a FEMALE Fig. When this happens, the fig will release enzymes to eat the wasp."
 
-bot.run('N/A')
+bot.run('MTE4NjUyODMwMTIzMDA2Mzc4Ng.GkYVBk.tlUudbAY-dhiIWK6lgwBIhumcJcr5iBISEsck8')
