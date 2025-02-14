@@ -119,4 +119,4 @@ async def send_message_loop():
         await channel.send(message)
         print(f"Message sent: {message}")
 
-bot.run('TOKEN')
+bot.run('MTMzODk0NDM3NDAzMzM1NDg0Mw.GYD2g-.c4Y6YLDT0ea48M6l1N4sHl95N5zx2L_aoXZ22M')

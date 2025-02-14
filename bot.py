@@ -83,6 +83,10 @@ async def fig_story(ctx):
     await ctx.send(FIG_STORY)
 
 @bot.command()
+async def summer(ctx):
+    await ctx.send(number_sum + " of Summer Vacation.")
+
+@bot.command()
 async def suggestions(ctx, *, suggestion):
     with open("suggestionBox.txt", "a") as file:
         file.write(ctx.message.author.name + ': ' + suggestion.lower() + '\n')
